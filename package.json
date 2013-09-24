@@ -1,0 +1,17 @@
+{
+  "name": "console-text-image",
+  "version": "0.1.0",
+  "description": "Print a text image to console on chrome browser.",
+  "main": "console-text-image.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "git@github.com:ohgyun/console-text-image",
+  "author": "Ohgyun Ahn",
+  "license": "BSD",
+  "dependencies": {
+    "restler": "~2.0.1",
+    "optimist": "~0.6.0",
+    "q": "~0.9.7"
+  }
+}
