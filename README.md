@@ -46,4 +46,4 @@ $ node ./convert.js -i example.png -o example.data
 
 
 ### License
-Copyright 2013 [Ohgyun Ahn](ohgyun@gmail.com) MIT License
+Copyright 2013 [Ohgyun Ahn](mailto:ohgyun@gmail.com) MIT License
