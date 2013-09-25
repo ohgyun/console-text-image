@@ -2,19 +2,26 @@
 <html>
 <head>
 <style>
-body {font-size:15px;font-family:sans-serif;}
-button {display:block;margin:10px;padding:5px;background:#efefef;border:1px solid #666;cursor:pointer;}
+body {padding:20px;font-size:18px;font-family:adelle,Georgia,sans-serif;line-height:150%;}
+ol {margin:10px;padding:0;}
+li {list-style:none}
+button {display:block;margin:10px;padding:6px;background:#f4f4f4;border:1px solid #ccc;border-radius:5px;cursor:pointer;}
+img {border:1px solid #ccc;border-radius:3px;}
 </style>
 </head>
 <body>
 <h1>Console Text Image Example</h1>
 <ol>
-<li>Open Console.</li>
-<li>Click images below.</li>
+<li>1. Open the console panel on chrome browser.</li>
+<li>2. Increase the horizontal size of the panel enough.</li>
+<li>3. Click images below.</li>
 </ol>
-<button onclick="showMap();"><img src="./map.png" width="280" height="390"></button>
-<button onclick="showEarth();"><img src="./earth.jpg" width="250" height="250"></button>
-<button onclick="showGirl();"><img src="./girl.jpg" width="200" height="300"></button>
+<button onclick="showMap();"><img src="./map.png" width="200"></button>
+<button onclick="showEarth();"><img src="./earth.jpg" width="200"></button>
+<button onclick="showGirl();"><img src="./girl.jpg" width="200"></button>
+
+<a href="https://github.com/ohgyun/console-text-image"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+
 <script src="../console-text-image.min.js"></script>
 
 <!-- each text image data -->
@@ -49,6 +56,16 @@ ConsoleTextImage({
     globalFuncName: 'showGirl',
     linePrintingInterval: 20
 });
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-44319729-1', 'ohgyun.github.io');
+  ga('send', 'pageview');
 </script>
 </body>
 </html>
