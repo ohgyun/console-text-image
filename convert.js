@@ -16,6 +16,9 @@ var argv = optimist
 
     .alias('o', 'output')
     .describe('o', 'Output file (default STDOUT)')
+
+    .alias('w', 'width')
+    .describe('w', 'Width of each line (default 80)')
     
     .argv;
 
@@ -34,7 +37,7 @@ var postImageToConvert = function (stat) {
             characters: '1',
             textType: 'sequence',
             fontsize: 1,
-            width: 80,
+            width: argv.width || 80,
             grayscale: 0,
             bgcolor: 'BLACK',
             contrast: 0,
@@ -86,6 +89,10 @@ var makeImageTextData = function (str) {
 
     // <font> 태그의 여는 태그가 생략된 경우도 있다.
     str = str.replace(/>font/g, '><font');
+
+    // black/white처럼 문자로 할당되어 있는 값을 코드로 변경한다.
+    str = str.replace(/black/ig, '#000000');
+    str = str.replace(/white/ig, '#ffffff');
 
     var lines = str.split('<br>');
 
