@@ -5,4 +5,4 @@ Console Text Image Printer on Chrome Browser
 
 
 ### Examples
-https://github.com/ohgyun/console-text-image
+http://ohgyun.github.io/console-text-image/example/example.html
