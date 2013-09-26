@@ -19,17 +19,18 @@ You can view the examples of the ConsoleTextImage [in this page](http://ohgyun.g
 ````
 
 3. Create a `ConsoleTextImage` instance.
-````
-var options = {
-    data: {text data you made},
-    word: {word to fill the image},
-    phrase: {if you call print func on console, it prints this phrase first},
-    globalFuncName: {you can print via this function globally, without an instance},
-    linePrintingInterval: {line printing interval (ms)}
-};
-var image = ConsoleTextImage(options);
-image.print(); // print to console.
-````
+
+    ````
+    var options = {
+        data: {text data you made},
+        word: {word to fill the image},
+        phrase: {if you call print func on console, it prints this phrase first},
+        globalFuncName: {you can print via this function globally, without an instance},
+        linePrintingInterval: {line printing interval (ms)}
+    };
+    var image = ConsoleTextImage(options);
+    image.print(); // print to console.
+    ````
 
 
 ### Making text data from an image
