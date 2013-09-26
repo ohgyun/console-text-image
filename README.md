@@ -37,6 +37,8 @@ You can make text data using `convert.js` node script.
 (Powered by http://www.text-image.com/convert/)
 
 ````
+$ npm install # install dependencies
+
 $ node ./convert.js # show usage
 
 $ node ./convert.js -i {imageFilePath} -o {outputFilePath}
