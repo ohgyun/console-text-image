@@ -17,7 +17,7 @@ var argv = optimist
     .describe('o', 'Output file (default STDOUT)')
 
     .alias('w', 'width')
-    .describe('w', 'Width of each line (default 80)')
+    .describe('w', 'Width of each line (default 80, MAX 80)')
 
     .alias('v', 'variable')
     .describe('v', 'Global variable name to assign data')
@@ -102,20 +102,22 @@ var makeImageTextData = function (str) {
 
     var regex = /<font color=#([a-z0-9]+)>([01]+)<\/font>/g;
 
-    // make data strings with `color{4}count,color{4}count/color{4}count,..` pattern.
+    // make data strings with `color{4}count{1}color{4}count{1}/color{4}count{1}` pattern.
     // slash(/) character stands for line break
-    // ex) abcd37,bcde1/cdef27,efgh1
+    // ex) abcd 3 bcde k / cdef { efgh x
     var result = lines.map(function (line) {
-        var values = [];
+        var blockData;
+        var lineData = '';
 
         while (regex.test(line)) {
             var color = RegExp.$1;
             var code = RegExp.$2;
 
-            values.push(encode(color) + code.length);
+            blockData = encodeColor(color) + encodeLength(code.length);
+            lineData += blockData;
         }
 
-        return values.join(',');
+        return lineData;
     });
 
     return result.join('/');
@@ -126,8 +128,8 @@ var makeImageTextData = function (str) {
  * ex) 'abcdef' --> 'q83v'
  * @param {String} code color code (6 hex, ex: efefef)
  */
-function encode(color) {
-    var keystr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789<>';
+var keystr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789<>!@#$%^&*()_+[]{}';
+function encodeColor(color) {
     var n, enc1, enc2;
     var encoded = '';
     for (var i = 0; i < 6; i += 3) {
@@ -137,6 +139,14 @@ function encode(color) {
         encoded += keystr.charAt(enc1) + keystr.charAt(enc2);
     }
     return encoded;
+}
+
+/**
+ * encode code length using key string
+ * @param {Number} len code length (max value: 80)
+ */
+function encodeLength(len) {
+    return keystr[len - 1];
 }
 
 var assignToVariable = function (data) {
@@ -166,7 +176,7 @@ var writeToOutput = function (data) {
 readImageStat
     .then(postImageToConvert)
     .then(parseResponseHtml)
-    .timeout(10000)
+    .timeout(20000)
     .then(makeImageTextData)
     .then(assignToVariable)
     .then(writeToOutput)
